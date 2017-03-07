@@ -102,12 +102,48 @@ public class CalculatorTest {
 	@Test
 	public void textMax_shouldReturnTheMaxValueFromMinus()
 	{
-	int[] values = { -2, -3, -5 };
+	int[] values = { -2, -1, -5 };
 		
 		// when
 		int max = calculator.max(values);
 		
 		// then
-		assertEquals(-2, max);
+		assertThat(max, is(values[1]));
+	}
+	
+	@Test
+	public void textMax_shouldReturnTheMaxValueFromSameMinus()
+	{
+	int[] values = { -2, -2, -2 };
+		
+		// when
+		int max = calculator.max(values);
+		
+		// then
+		assertThat(max, is(values[1]));
+	}
+	
+	@Test
+	public void textMax_shouldReturnTheMaxValueFromPlusValues()
+	{
+	int[] values = { 2, 213, 53, 105, 303, 208 };
+		
+		// when
+		int max = calculator.max(values);
+		
+		// then
+		assertThat(max, is(303));
+	}
+	
+	@Test
+	public void textMax_shouldReturnTheMaxValueFromChars()
+	{
+	int[] values = { 'a', 'b', 'c', 'd', 'e', 'f' };
+		
+		// when
+		int max = calculator.max(values);
+		
+		// then
+		assertThat(max, is(102));
 	}
 }
