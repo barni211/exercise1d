@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 public class CalculatorTest {
 	private Calculator calculator;
@@ -60,4 +62,52 @@ public class CalculatorTest {
 		// then
 		// empty
 	}		
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testMax_shouldRaiseAnExceptionForEmptyArgument() {
+		// given
+		int[] values = {};
+		
+		// when
+		calculator.max(values);
+		
+		// then
+		// empty
+	}	
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testMax_shouldRaiseAnExceptionForNullArgument() {
+		// given
+		int[] values = null;
+		
+		// when
+		calculator.max(values);
+		
+		// then
+		// empty
+	}
+	
+	@Test
+	public void testMaxn_shouldReturnTheOnlyValue() {
+		// given
+		int[] values = { -5 };
+		
+		// when
+		Integer max = calculator.max(values);
+		
+		// then
+		assertThat(max,is(values[0]));
+	}
+	
+	@Test
+	public void textMax_shouldReturnTheMaxValueFromMinus()
+	{
+	int[] values = { -2, -3, -5 };
+		
+		// when
+		int max = calculator.max(values);
+		
+		// then
+		assertEquals(-2, max);
+	}
 }
